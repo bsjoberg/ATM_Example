@@ -3,7 +3,7 @@ package nicebank;
 public class Account {
 	private Money balance = new Money();
 	
-	public void deposit (Money amount) {
+	public void credit(Money amount) {
 		balance = balance.add(amount);
 	}
 

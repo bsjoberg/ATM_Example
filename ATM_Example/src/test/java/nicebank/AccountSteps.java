@@ -13,11 +13,9 @@ public class AccountSteps {
 		this.helper = helper;
 	}
 	
-	@Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
+	@Given("^my account has been credited with (\\$\\d+\\.\\d+)$")
 	public void iHaveDeposited$InMyAccount(Money amount) throws Throwable {
-	    helper.getMyAccount().deposit(amount);
-	    
-	    Assert.assertEquals("Incorrect Account Balance - ", amount, helper.getMyAccount().getBalance());
+	    helper.getMyAccount().credit(amount);
 	}
 	
 	@Then("^the balance of my account should be (\\$\\d+\\.\\d+)$")
