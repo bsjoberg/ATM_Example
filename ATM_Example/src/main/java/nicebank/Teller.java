@@ -1,9 +1,14 @@
 package nicebank;
 
 public class Teller {
-
-	public void withdrawFrom(Account myAccount, int amount) {
-		
+	private CashSlot cashSlot;
+	
+	public Teller (CashSlot cashSlot) {
+		this.cashSlot = cashSlot;
+	}
+	
+	public void withdrawFrom(Account myAccount, int dollars) {
+		cashSlot.dispense(dollars);
 	}
 
 }

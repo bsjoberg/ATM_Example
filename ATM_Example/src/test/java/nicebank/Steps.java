@@ -1,5 +1,7 @@
 package nicebank;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 
 import cucumber.api.PendingException;
@@ -8,10 +10,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class Steps {
-	KnowsMyAccount helper;
+	KnowsMyDomain helper;
 	
-	class KnowsMyAccount {
+	class KnowsMyDomain {
 		private Account myAccount;
+		private CashSlot cashSlot;
+		private Teller teller;
 		
 		public Account getMyAccount() {
 			if (myAccount == null) {
@@ -20,10 +24,24 @@ public class Steps {
 			
 			return myAccount;
 		}
+		
+		public Teller getTeller() {
+			if (teller == null)
+				teller = new Teller(getCashSlot());
+			return teller;
+		}
+		
+		public CashSlot getCashSlot() {
+			if (cashSlot == null) {
+				cashSlot = new CashSlot();
+			}
+				
+			return cashSlot;
+		}
 	}
 	
 	public Steps () {
-		helper = new KnowsMyAccount();
+		helper = new KnowsMyDomain();
 	}
 	
 	@Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
@@ -34,14 +52,12 @@ public class Steps {
 	}
 
 	@When("^I request \\$(\\d+)$")
-	public void iRequest$(int amount) throws Throwable {
-	    Teller teller = new Teller();
-	    teller.withdrawFrom(helper.getMyAccount(), amount);
+	public void iRequest$(int dollars) throws Throwable {
+	    helper.getTeller().withdrawFrom(helper.getMyAccount(), dollars);
 	}
 
 	@Then("^\\$(\\d+) should be dispensed$")
-	public void $ShouldBeDispensed(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void $ShouldBeDispensed(int dollars) throws Throwable {
+	    assertEquals("Incorrect amount dispensed - ", dollars, helper.getCashSlot().getContents());
 	}
 }
