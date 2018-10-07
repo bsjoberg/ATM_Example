@@ -1,4 +1,8 @@
-package nicebank;
+package support;
+
+import nicebank.Account;
+import nicebank.CashSlot;
+import nicebank.Teller;
 
 public class KnowsTheDomain {
 	private Account myAccount;
