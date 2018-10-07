@@ -1,6 +1,6 @@
 package nicebank;
 
-public class KnowsMyDomain {
+public class KnowsTheDomain {
 	private Account myAccount;
 	private CashSlot cashSlot;
 	private Teller teller;

@@ -9,12 +9,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class Steps {
-	KnowsMyDomain helper;
+	KnowsTheDomain helper;
 	
 
 	
 	public Steps () {
-		helper = new KnowsMyDomain();
+		helper = new KnowsTheDomain();
 	}
 	
 	@Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
