@@ -10,4 +10,8 @@ public class Account {
 	public Money getBalance() {
 		return balance;
 	}
+
+	public void debit(int dollars) {
+		balance = balance.minus(new Money(dollars, 0));
+	}
 }
