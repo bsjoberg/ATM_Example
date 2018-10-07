@@ -8,10 +8,12 @@ import cucumber.api.junit.Cucumber;
 
 	@RunWith(Cucumber.class)
 	@CucumberOptions(
-			plugin = {"pretty", "html:target/resources"} ,
-			features = "src/test/resources",
+			plugin = {"pretty", "html:out"} ,
+			features = "src/test/resources" ,
+			glue = { "nicebank", "hooks", "support"} ,
 			snippets = SnippetType.CAMELCASE
 			)
+	
 	public class RunCukesTest {
 	
 }
