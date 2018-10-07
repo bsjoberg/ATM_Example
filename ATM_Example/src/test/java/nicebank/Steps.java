@@ -7,15 +7,12 @@ import cucumber.api.java.en.When;
 
 public class Steps {
 	
-	class Account {
-		public Account(int openingBalance) {
-			
-		}
-	}
+	
 	
 	@Given("^I have deposited \\$(\\d+) in my account$")
 	public void iHaveDeposited$InMyAccount(int amount) throws Throwable {
-	    new Account(amount);
+	    Account myAccount = new Account();
+	    myAccount.deposit(amount);
 	}
 
 	@When("^I request \\$(\\d+)$")
