@@ -9,14 +9,16 @@ public class AccountUnit {
 	@Test
 	public void testDeposit100() {
 		Account account = new Account();
-		account.deposit(100);
-		assertEquals(100, account.balance());
+		Money amount = new Money(100, 00);
+		account.deposit(amount);
+		assertEquals(new Money(100, 00), account.getBalance());
 	}
 
 	@Test 
 	public void testDeposit200() {
 		Account account = new Account();
-		account.deposit(200);
-		assertEquals(200, account.balance());
+		Money amount = new Money(200, 00);
+		account.deposit(amount);
+		assertEquals(new Money(200, 00), account.getBalance());
 	}
 }
