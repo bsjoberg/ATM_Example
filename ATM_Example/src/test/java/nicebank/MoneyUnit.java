@@ -19,4 +19,12 @@ public class MoneyUnit {
 		
 		Assert.assertTrue(money.equals(new Money("$70.59")));
 	}
+	
+	@Test 
+	public void testMinusMoney() {
+		Money money = new Money("$40.20");
+		money = money.minus(new Money("$20.00"));
+		
+		Assert.assertEquals(new Money("$20.20"), money);
+	}
 }
