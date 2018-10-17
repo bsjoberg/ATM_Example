@@ -20,6 +20,14 @@ public class MoneyUnit {
 		Assert.assertTrue(money.equals(new Money("$70.59")));
 	}
 	
+	@Test
+	public void testAddLargeCents() {
+		Money money = new Money("20.89");
+		money = money.add(new Money("$10.78"));
+		
+		Assert.assertTrue(money.equals(new Money("$31.67")));
+	}
+	
 	@Test 
 	public void testMinusMoney() {
 		Money money = new Money("$40.20");
