@@ -1,5 +1,6 @@
 package hooks;
 
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriverException;
 
@@ -14,7 +15,7 @@ public class WebDriverHooks {
 		this.helper = helper;
 	}
 	
-	//@After
+	@After
 	public void finish (Scenario scenario) {
 		try {
 			byte[] screenshot =
@@ -25,7 +26,11 @@ public class WebDriverHooks {
 		}
 		finally {
 			System.out.println("WebDriverHooks.closing");
-			helper.getWebDriver().close();
+			try {
+				helper.getWebDriver().close();
+			} catch (NoSuchSessionException nsse) {
+				System.out.println(nsse.toString());
+			}
 		}
 	}
 }

@@ -19,7 +19,6 @@ public class CashSlotSteps {
 	
 	@Then("^nothing should be dispensed$")
 	public void nothingShouldBeDispensed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
 	    assertEquals("Incorrect amount dispensed - ", 0, helper.getCashSlot().getContents());
 	}
 }
