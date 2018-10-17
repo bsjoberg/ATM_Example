@@ -9,7 +9,8 @@ public class AutomatedTeller implements Teller {
 	
 	public void withdrawFrom(Account myAccount, int dollars) {
 		myAccount.debit(dollars);
-		cashSlot.dispense(dollars);
+		if (myAccount.sufficientFunds())
+			cashSlot.dispense(dollars);
 	}
 
 }

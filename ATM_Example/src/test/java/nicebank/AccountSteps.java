@@ -2,7 +2,6 @@ package nicebank;
 
 import org.junit.Assert;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import support.KnowsTheDomain;
@@ -26,7 +25,6 @@ public class AccountSteps {
 	
 	@Then("^I should be told that I have insufficient funds$")
 	public void iShouldBeToldThatIHaveInsufficientFunds() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    Assert.assertFalse(helper.getMyAccount().sufficientFunds());
 	}
 }
