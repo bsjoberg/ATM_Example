@@ -25,7 +25,6 @@ public class WebDriverHooks {
 			System.err.println(somePlatformDontSupportScreenshots.getMessage());
 		}
 		finally {
-			System.out.println("WebDriverHooks.closing");
 			try {
 				helper.getWebDriver().close();
 			} catch (NoSuchSessionException nsse) {
