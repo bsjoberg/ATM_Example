@@ -24,11 +24,12 @@ public class AtmServer {
 	
 	public void start() throws Exception {
 		server.start();
-		System.out.println("Listening on " + server.getURI());
+		System.out.println("******* ATMServer:Start Listening on " + server.getURI());
 	}
 	
 	public void stop() throws Exception {
 		server.stop();
+		System.out.println("******* ATMServer:Stop listening on " + server.getURI());
 	}
 	
 	public static void main (String[] args) throws Exception {

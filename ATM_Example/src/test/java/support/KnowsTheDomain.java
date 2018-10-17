@@ -24,7 +24,7 @@ public class KnowsTheDomain {
 	
 	public Teller getTeller() {
 		if (teller == null)
-			teller = new AtmUserInterface();
+			teller = new AtmUserInterface(getWebDriver());
 		return teller;
 	}
 	

@@ -18,11 +18,13 @@ public class ServerHooks {
 	@Before
 	public void startServer() throws Exception {
 		server = new AtmServer(PORT, helper.getCashSlot(), helper.getMyAccount());
+		System.out.println("ServerHooks.startServer");
 		server.start();
 	}
 	
 	@After
 	public void stopServer() throws Exception {
+		System.out.println("ServerHooks.stopServer");
 		server.stop();
 	}
 }

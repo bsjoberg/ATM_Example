@@ -14,7 +14,7 @@ public class WebDriverHooks {
 		this.helper = helper;
 	}
 	
-	@After
+	//@After
 	public void finish (Scenario scenario) {
 		try {
 			byte[] screenshot =
@@ -24,6 +24,7 @@ public class WebDriverHooks {
 			System.err.println(somePlatformDontSupportScreenshots.getMessage());
 		}
 		finally {
+			System.out.println("WebDriverHooks.closing");
 			helper.getWebDriver().close();
 		}
 	}
