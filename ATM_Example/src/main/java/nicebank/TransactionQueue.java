@@ -2,11 +2,14 @@ package nicebank;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
+
+import org.apache.commons.io.FileUtils;
 
 public class TransactionQueue {
 	public static String MESSAGES_FOLDER = "./messages";
@@ -14,6 +17,16 @@ public class TransactionQueue {
 	private int nextId = 1;
 	
 	public TransactionQueue () {
+		new File(MESSAGES_FOLDER).mkdirs();
+	}
+	
+	public static void clear() {
+		try {
+			FileUtils.deleteDirectory(new File(TransactionQueue.MESSAGES_FOLDER));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		new File(MESSAGES_FOLDER).mkdirs();
 	}
 	

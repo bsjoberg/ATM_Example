@@ -1,15 +1,17 @@
 package nicebank;
 
 import java.io.File;
-import java.io.IOException;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Test;
 
 import junit.framework.TestCase;
 
 public class TransactionQueueUnit extends TestCase {
+	
+	public void setUp() throws Exception {
+		TransactionQueue.clear();
+	}
 	
 	@Test
 	public void testWriteAdd() {
@@ -40,11 +42,5 @@ public class TransactionQueueUnit extends TestCase {
 	
 	@After
 	public void tearDown() throws Exception {
-		try {
-			FileUtils.deleteDirectory(new File(TransactionQueue.MESSAGES_FOLDER));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 	}
 }

@@ -1,6 +1,6 @@
 package nicebank;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,6 +10,7 @@ public class BalanceStoreUnit {
 
 	@Before
 	public void setUp() throws Exception {
+		BalanceStore.clear();
 	}
 
 	@After
@@ -17,8 +18,10 @@ public class BalanceStoreUnit {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testAdd100() {
+		BalanceStore.setBalance(new Money(100, 00));
+		
+		assertEquals(new Money(100,00), BalanceStore.getBalance());
 	}
 
 }
