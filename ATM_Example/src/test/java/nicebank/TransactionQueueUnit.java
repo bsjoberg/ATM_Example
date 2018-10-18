@@ -22,6 +22,22 @@ public class TransactionQueueUnit extends TestCase {
 		assertTrue(messages.length == 1);
 	}
 	
+	@Test
+	public void testReadAdd200() {
+		TransactionQueue queue = new TransactionQueue();
+		queue.write("+" + "$200");
+		
+		assertEquals("+$200", queue.read());
+	}
+	
+	@Test
+	public void testReadAdd300() {
+		TransactionQueue queue = new TransactionQueue();
+		queue.write("+" + "$300");
+		
+		assertEquals("+$300", queue.read());
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		try {

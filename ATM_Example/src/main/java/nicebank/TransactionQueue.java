@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
 
 public class TransactionQueue {
 	public static String MESSAGES_FOLDER = "./messages";
@@ -31,6 +34,46 @@ public class TransactionQueue {
 		writer.close();
 		
 		nextId++;
+	}
+
+	public String read() {
+		//Get files in 'messages'
+		File messagesFolder = new File(MESSAGES_FOLDER);
+		File[] messages = messagesFolder.listFiles();
+		
+		String message = "";
+		
+		// If message file found
+		if (messages != null && messages.length > 0) {
+			Arrays.sort(messages, new Comparator<File>() {
+
+				public int compare(File f1, File f2) {
+					return Integer.parseInt(f1.getName())
+							- Integer.parseInt(f2.getName());
+				}
+			});
+			
+			// Open It
+			Scanner scanner = null;
+			try {
+				scanner = new Scanner(messages[0]);
+				
+				if (scanner.hasNextLine()) {
+					message = scanner.nextLine();
+					scanner.close();
+					
+					// Delete It
+					messages[0].delete();
+				}
+				else {
+					scanner.close();
+				}
+			} catch (FileNotFoundException e) {
+				// File has gone away!
+			}
+		}
+		
+		return message;
 	} 
 
 }
