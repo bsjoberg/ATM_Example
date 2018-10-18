@@ -31,8 +31,4 @@ public class AtmServer {
 		server.stop();
 		System.out.println("******* ATMServer:Stop listening on " + server.getURI());
 	}
-	
-	public static void main (String[] args) throws Exception {
-		new AtmServer(9988).start();
-	}
 }
