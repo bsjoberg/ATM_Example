@@ -1,11 +1,19 @@
 package nicebank;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class AccountUnit {
 
+	@Before
+	public void setUp() {
+		TransactionQueue.clear();
+	}
+	
 	@Test
 	public void testDeposit100() {
 		Account account = new Account();
@@ -39,5 +47,10 @@ public class AccountUnit {
 		account.debit(200);
 		assertEquals(new Money(100, 00), account.getBalance());
 		assertFalse(account.sufficientFunds());
+	}
+	
+	@After
+	public void tearDown() {
+		BalanceStore.clear();
 	}
 }
