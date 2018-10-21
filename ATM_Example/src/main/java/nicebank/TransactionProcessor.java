@@ -15,12 +15,6 @@ public class TransactionProcessor {
         do {
             String message = queue.read();
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-
-            }
-
             if (message.length() > 0) {
                 Money balance = BalanceStore.getBalance();
                 Money transactionAmount = new Money(message);
@@ -28,6 +22,7 @@ public class TransactionProcessor {
                 if (isCreditTransaction(message)){
                     BalanceStore.setBalance(balance.add(transactionAmount));
                 } else {
+                	// Need to handle when trying to debit more than available.
                     BalanceStore.setBalance(balance.minus(transactionAmount));
                 }
             }
