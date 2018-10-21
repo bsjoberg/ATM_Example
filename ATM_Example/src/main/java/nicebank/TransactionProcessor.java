@@ -23,7 +23,11 @@ public class TransactionProcessor {
                     BalanceStore.setBalance(balance.add(transactionAmount));
                 } else {
                 	// Need to handle when trying to debit more than available.
-                    BalanceStore.setBalance(balance.minus(transactionAmount));
+                	if (transactionAmount.dollars() <= BalanceStore.getBalance().dollars())
+                		BalanceStore.setBalance(balance.minus(transactionAmount));
+                	else {
+                		// Need to indicate the last transaction had insufficient funds
+                	}
                 }
             }
         } while (true);
