@@ -40,6 +40,14 @@ public class TransactionQueueUnit extends TestCase {
 		assertEquals("+$300", queue.read());
 	}
 	
+	@Test 
+	public void testMinus200() {
+		TransactionQueue queue = new TransactionQueue();
+		queue.write("-" + "$200");
+		
+		assertEquals("-$200", queue.read());
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 	}
