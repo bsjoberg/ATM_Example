@@ -35,4 +35,11 @@ public class MoneyUnit {
 		
 		Assert.assertEquals(new Money("$20.20"), money);
 	}
+	
+	@Test
+	public void testStripCharactersBeforeDollar() {
+		Money money = new Money("+$100.00");
+		
+		Assert.assertEquals(new Money("$100.00"), money);
+	}
 }

@@ -16,7 +16,7 @@ public class TransactionQueueUnit extends TestCase {
 	@Test
 	public void testWriteAdd() {
 		TransactionQueue queue = new TransactionQueue();
-		queue.write("+" + "$100");
+		queue.write("+" + "$100.00");
 		
 		// Check that file exists;
 		File messagesFolder = new File(TransactionQueue.MESSAGES_FOLDER);
@@ -27,25 +27,25 @@ public class TransactionQueueUnit extends TestCase {
 	@Test
 	public void testReadAdd200() {
 		TransactionQueue queue = new TransactionQueue();
-		queue.write("+" + "$200");
+		queue.write("+" + "$200.00");
 		
-		assertEquals("+$200", queue.read());
+		assertEquals("+$200.00", queue.read());
 	}
 	
 	@Test
 	public void testReadAdd300() {
 		TransactionQueue queue = new TransactionQueue();
-		queue.write("+" + "$300");
+		queue.write("+" + "$300.00");
 		
-		assertEquals("+$300", queue.read());
+		assertEquals("+$300.00", queue.read());
 	}
 	
 	@Test 
 	public void testMinus200() {
 		TransactionQueue queue = new TransactionQueue();
-		queue.write("-" + "$200");
+		queue.write("-" + "$200.00");
 		
-		assertEquals("-$200", queue.read());
+		assertEquals("-$200.00", queue.read());
 	}
 	
 	@After

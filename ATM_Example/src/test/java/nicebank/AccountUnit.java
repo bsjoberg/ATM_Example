@@ -15,12 +15,6 @@ public class AccountUnit {
 	public void setUp() {
 		BalanceStore.clear();
 		
-		try {
-			Thread.sleep(SLEEP_TIME);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
 		transactionProcessorThread = new Thread() {
 			public void run() {
 				TransactionProcessor processor = new TransactionProcessor();
