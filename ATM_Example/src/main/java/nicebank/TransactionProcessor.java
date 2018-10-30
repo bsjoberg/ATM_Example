@@ -27,6 +27,8 @@ public class TransactionProcessor {
                 		BalanceStore.setBalance(balance.minus(transactionAmount));
                 	else {
                 		// Need to indicate the last transaction had insufficient funds
+                		System.out.println("TransactionProcessor.process() Insufficient funds (Balance = " + balance 
+                				+ ", Transaction Amt = " + transactionAmount.toString() + ")");
                 	}
                 }
             }

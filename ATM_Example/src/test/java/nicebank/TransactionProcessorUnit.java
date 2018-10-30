@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class TransactionProcessorUnit {
 	private Thread transactionProcessorThread;
-	private int SLEEP_TIME = 500;
+	private int SLEEP_TIME = 250;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -44,4 +44,20 @@ public class TransactionProcessorUnit {
 		assertEquals(new Money("$100.00"), BalanceStore.getBalance());
 	}
 
+	@Test
+	public void testZeroWrite200() {
+		TransactionQueue queue = new TransactionQueue();
+		
+		assertEquals(new Money("$0.00"), BalanceStore.getBalance());
+		
+		queue.write("+" + "$200.00");
+		
+		try {
+			Thread.sleep(SLEEP_TIME);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(new Money("$200.00"), BalanceStore.getBalance());
+	}
 }
