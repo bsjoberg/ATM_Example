@@ -13,6 +13,7 @@ public class TransactionProcessorUnit {
 	@Before
 	public void setUp() throws Exception {
 		BalanceStore.clear();
+		TransactionQueue.clear();
 		
 		transactionProcessorThread = new Thread() {
 			public void run() {

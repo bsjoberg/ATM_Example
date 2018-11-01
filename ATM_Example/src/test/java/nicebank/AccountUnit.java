@@ -14,6 +14,7 @@ public class AccountUnit {
 	@Before
 	public void setUp() {
 		BalanceStore.clear();
+		TransactionQueue.clear();
 		
 		transactionProcessorThread = new Thread() {
 			public void run() {
