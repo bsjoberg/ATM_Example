@@ -14,7 +14,14 @@ public class Account {
 
 	public void debit(int dollars) {
 		Money amount = new Money(dollars, 0);
-		queue.write("-" + amount.toString());
+		
+		// Before writing, check for sufficient funds
+		if (dollars <= getBalance().dollars()) {
+			sufficientFunds = true;
+			queue.write("-" + amount.toString());
+		} else {
+			sufficientFunds = false;
+		}
 	}
 
 	public boolean sufficientFunds() {
