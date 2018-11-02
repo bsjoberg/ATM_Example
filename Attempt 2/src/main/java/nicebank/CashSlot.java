@@ -1,6 +1,6 @@
 package nicebank;
 
-class CashSlot {
+public class CashSlot {
 	private int contents;
 	
 	public int contents() {
