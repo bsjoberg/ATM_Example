@@ -8,6 +8,40 @@ import cucumber.api.java.en.When;
 
 
 public class Steps {
+	KnowsTheDomain helper;
+	
+	class KnowsTheDomain {
+		private Account myAccount;
+		private CashSlot cashSlot;
+		
+		public Account getMyAccount() {
+			if (myAccount == null) {
+				myAccount = new Account();
+			}
+			
+			return myAccount;
+		}
+		
+		public CashSlot getCashShot() {
+			if (cashSlot == null) {
+				cashSlot = new CashSlot();
+			}
+			
+			return cashSlot;
+		}
+	}
+	
+	class CashSlot {
+		private int contents;
+		
+		public int contents() {
+			return contents;
+		}
+		
+		public void dispense(int dollars) {
+			contents = dollars;
+		}
+	}
 	
 	class Account {
 		private Money balance = new Money();
@@ -19,25 +53,31 @@ public class Steps {
 		public Money getBalance() {
 			return balance;
 		}
+
+		public void debit(int amount) {
+			balance = balance.minus(new Money(amount, 00));
+		}
+	}
+	
+	public Steps() {
+		helper = new KnowsTheDomain();
 	}
 	
 	@Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
 	public void iHaveDeposited$InMyAccount(Money amount) throws Throwable {
-	    Account myAccount = new Account();
-	    myAccount.deposit(amount);
+	    helper.getMyAccount().deposit(amount);
 	    
-	    Assert.assertEquals("Incorrect account balance - ", amount, myAccount.getBalance());
+	    Assert.assertEquals("Incorrect account balance - ", amount, helper.getMyAccount().getBalance());
 	}
 
-	@When("^I request \\$(\\d+)$")
-	public void iRequest$(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	@When("^I withdraw \\$(\\d+)$")
+	public void iRequest$(int amount) throws Throwable {
+	    Teller teller = new Teller(helper.getCashShot());
+	    teller.withdrawFrom(helper.getMyAccount(), amount);
 	}
 
 	@Then("^\\$(\\d+) should be dispensed$")
-	public void $ShouldBeDispensed(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void $ShouldBeDispensed(int dollars) throws Throwable {
+	    Assert.assertEquals("Incorrect amount dispensed - ", dollars, helper.getCashShot().contents());
 	}	
 }
