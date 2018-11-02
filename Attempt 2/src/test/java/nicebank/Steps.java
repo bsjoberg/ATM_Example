@@ -21,10 +21,9 @@ public class Steps {
 		}
 	}
 	
-	@Given("^I have deposited \\$(\\d+)\\.(\\d+) in my account$")
-	public void iHaveDeposited$InMyAccount(int dollars, int cents) throws Throwable {
+	@Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
+	public void iHaveDeposited$InMyAccount(Money amount) throws Throwable {
 	    Account myAccount = new Account();
-	    Money amount = new Money(dollars, cents);
 	    myAccount.deposit(amount);
 	    
 	    Assert.assertEquals("Incorrect account balance - ", amount, myAccount.getBalance());
