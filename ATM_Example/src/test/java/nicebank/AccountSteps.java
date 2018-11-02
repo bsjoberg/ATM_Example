@@ -31,6 +31,6 @@ public class AccountSteps {
 	
 	@Then("^I should be told that I have insufficient funds$")
 	public void iShouldBeToldThatIHaveInsufficientFunds() throws Throwable {
-	    Assert.assertFalse(helper.getMyAccount().sufficientFunds());
+	    Assert.assertFalse(helper.getMyAccount().hasSufficientFunds());
 	}
 }

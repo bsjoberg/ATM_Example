@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class AccountUnit {
 	private Thread transactionProcessorThread;
-	private int SLEEP_TIME = 250;
+	private int SLEEP_TIME = 500;
 
 	@Before
 	public void setUp() {
@@ -42,9 +42,9 @@ public class AccountUnit {
 	}
 
 	@Test
-	public void testDeposit200() {		
+	public void testDeposit300() {		
 		Account account = new Account();
-		Money amount = new Money(200, 00);
+		Money amount = new Money(300, 00);
 		account.credit(amount);
 
 		try {
@@ -53,7 +53,7 @@ public class AccountUnit {
 			e.printStackTrace();
 		}
 
-		assertEquals(new Money(200, 00), account.getBalance());
+		assertEquals(new Money(300, 00), account.getBalance());
 	}
 
 	@Test
@@ -91,7 +91,7 @@ public class AccountUnit {
 			e.printStackTrace();
 		}
 		
-		account.debit(200);
+		boolean sufficientFunds = account.debit(200);
 		
 		try {
 			Thread.sleep(SLEEP_TIME);
@@ -100,7 +100,7 @@ public class AccountUnit {
 		}
 		
 		assertEquals(new Money(150, 00), account.getBalance());
-		assertFalse(account.sufficientFunds());
+		assertFalse(sufficientFunds);
 	}
 
 	@After
