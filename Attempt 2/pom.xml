@@ -4,4 +4,31 @@
   <artifactId>atm-example-v2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>ATM Example v2</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>info.cukes</groupId>
+  		<artifactId>cucumber-junit</artifactId>
+  		<version>1.2.5</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>info.cukes</groupId>
+  		<artifactId>cucumber-java</artifactId>
+  		<version>1.2.5</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>info.cukes</groupId>
+  		<artifactId>cucumber-core</artifactId>
+  		<version>1.2.5</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>info.cukes</groupId>
+  		<artifactId>cucumber-picocontainer</artifactId>
+  		<version>1.2.5</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>info.cukes</groupId>
+  		<artifactId>gherkin</artifactId>
+  		<version>2.12.2</version>
+  	</dependency>
+  </dependencies>
 </project>
