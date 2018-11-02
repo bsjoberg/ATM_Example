@@ -8,8 +8,8 @@ import support.KnowsTheDomain;
 public class AccountSteps {
 	KnowsTheDomain helper;
 	
-	public AccountSteps() {
-		helper = new KnowsTheDomain();
+	public AccountSteps(KnowsTheDomain helper) {
+		this.helper = helper;
 	}
 	
 	@Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
