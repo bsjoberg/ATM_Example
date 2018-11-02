@@ -20,10 +20,16 @@ public class AccountSteps {
 	
 	@Then("^the balance of my account should be (\\$\\d+\\.\\d+)$")
 	public void theBalanceOfMyAccountShouldBe$(Money balance) throws Throwable {
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException ie) {
-			ie.printStackTrace();
+		int timeoutMilliSecs = 3000;
+		int pollIntervalMilliSecs = 100;
+		
+		while (!helper.getMyAccount().getBalance().equals(balance) && timeoutMilliSecs > 0) {
+			try {
+				Thread.sleep(pollIntervalMilliSecs);
+				timeoutMilliSecs -= pollIntervalMilliSecs;
+			} catch (InterruptedException ie) {
+				ie.printStackTrace();
+			}
 		}
 		
 		Assert.assertEquals("Incorrect Account Balance - ", balance, helper.getMyAccount().getBalance());
