@@ -1,11 +1,10 @@
 package nicebank;
 
 import org.junit.Assert;
-import cucumber.api.PendingException;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 
 public class Steps {
 	KnowsTheDomain helper;
@@ -28,34 +27,6 @@ public class Steps {
 			}
 			
 			return cashSlot;
-		}
-	}
-	
-	class CashSlot {
-		private int contents;
-		
-		public int contents() {
-			return contents;
-		}
-		
-		public void dispense(int dollars) {
-			contents = dollars;
-		}
-	}
-	
-	class Account {
-		private Money balance = new Money();
-		
-		public void deposit (Money amount) {
-			balance = balance.add(amount);
-		}
-		
-		public Money getBalance() {
-			return balance;
-		}
-
-		public void debit(int amount) {
-			balance = balance.minus(new Money(amount, 00));
 		}
 	}
 	

@@ -1,8 +1,5 @@
 package nicebank;
 
-import nicebank.Steps.Account;
-import nicebank.Steps.CashSlot;
-
 public class Teller {
 	private CashSlot cashSlot;
 	
