@@ -35,4 +35,15 @@ public class AccountUnit {
 		Assert.assertEquals(new Money(100, 00), myAccount.getBalance());
 	}
 	
+	@Test
+	public void testDebit200from150() {
+		myAccount.deposit(new Money("$150.00"));
+		
+		Assert.assertEquals(new Money(150, 00), myAccount.getBalance());
+		
+		boolean sufficientFunds = myAccount.debit(200);
+		
+		Assert.assertEquals(new Money(150, 00), myAccount.getBalance());
+		Assert.assertFalse(sufficientFunds);
+	}
 }

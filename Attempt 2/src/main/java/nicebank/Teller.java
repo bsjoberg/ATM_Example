@@ -16,15 +16,11 @@ public class Teller {
 	 */
 	public boolean withdrawFrom(Account myAccount, int dollars) {
 		boolean sufficientFunds = false;
-		// check if sufficient funds exist
-		if (myAccount.getBalance().dollars() >= dollars) {
-			sufficientFunds = true;
-			myAccount.debit(dollars);
+		
+		sufficientFunds = myAccount.debit(dollars);
+		if (sufficientFunds)
 			cashSlot.dispense(dollars);
-		}
-		else
-			sufficientFunds = false;
-
+		
 		return sufficientFunds;
 	}
 }

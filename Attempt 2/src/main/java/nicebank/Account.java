@@ -11,7 +11,17 @@ public class Account {
 		return balance;
 	}
 
-	public void debit(int amount) {
-		balance = balance.minus(new Money(amount, 00));
+	public boolean debit(int amount) {
+		boolean sufficientFunds = true;
+		
+		// check if sufficient funds exist
+		if (getBalance().dollars() >= amount) {
+			balance = balance.minus(new Money(amount, 00));
+			sufficientFunds = true;
+		}
+		else
+			sufficientFunds = false;
+		
+		return sufficientFunds;
 	}
 }
