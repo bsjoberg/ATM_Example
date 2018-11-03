@@ -11,6 +11,12 @@ public class Account {
 		return balance;
 	}
 
+	/**
+	 * Debits the amount passed in if sufficient funds exist.
+	 * 
+	 * @param amount	amount to debit
+	 * @return			whether sufficient funds exist
+	 */
 	public boolean debit(int amount) {
 		boolean sufficientFunds = true;
 		
