@@ -19,6 +19,7 @@ public class Teller {
 		// check if sufficient funds exist
 		if (myAccount.getBalance().dollars() >= dollars) {
 			sufficientFunds = true;
+			myAccount.debit(dollars);
 			cashSlot.dispense(dollars);
 		}
 		else
