@@ -9,4 +9,5 @@ Feature: Cash Withdrawal
 		Given I have deposited $40.00 in my account
 		When I withdraw $50
 		Then $0 should be dispensed
+		And the balance of my account should be $40.00
 		And I should be notified of insufficient funds
