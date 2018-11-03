@@ -21,7 +21,7 @@ public class TellerUnit {
 
 	@Test
 	public void testInsufficientFunds() {
-		helper.getMyAccount().deposit(new Money(40,00));
+		helper.getMyAccount().credit(new Money(40,00));
 		
 		Teller teller = new Teller(helper.getCashSlot());
 		
