@@ -16,8 +16,6 @@ public class AccountSteps {
 	@Given("^my account has been credited with (\\$\\d+\\.\\d+)$")
 	public void myAccountHasBeenCreditedWith$(Money amount) throws Throwable {
 	    helper.getMyAccount().credit(amount);
-	    
-	    Assert.assertEquals("Incorrect account balance - ", amount, helper.getMyAccount().getBalance());
 	}
 	
 	@Then("^the balance of my account should be \\$(\\d+)\\.(\\d+)$")
