@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletResponse;
  
 public class WithdrawalServlet extends HttpServlet
 {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -257598521010755099L;
 	
 	private CashSlot cashSlot;

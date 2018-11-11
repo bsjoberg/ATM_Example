@@ -40,8 +40,8 @@ public class AtmServer
         System.out.println("Server shutdown");
     }
 
-    public static void main(String[] args) throws Exception
-    {
-        new AtmServer(9988, new CashSlot(), new Account()).start();
-    }
+//    public static void main(String[] args) throws Exception
+//    {
+//        new AtmServer(9988, new CashSlot(), new Account()).start();
+//    }
 }
