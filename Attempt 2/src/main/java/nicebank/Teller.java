@@ -1,26 +1,5 @@
 package nicebank;
 
-public class Teller {
-	private CashSlot cashSlot;
-	
-	public Teller(CashSlot cashSlot) {
-		this.cashSlot = cashSlot;
-	}
-	
-	/**
-	 * Returns false if insufficient funds exist
-	 * 
-	 * @param myAccount
-	 * @param dollars
-	 * @return 		false if insufficient funds exist
-	 */
-	public boolean withdrawFrom(Account myAccount, int dollars) {
-		boolean sufficientFunds = false;
-		
-		sufficientFunds = myAccount.debit(dollars);
-		if (sufficientFunds)
-			cashSlot.dispense(dollars);
-		
-		return sufficientFunds;
-	}
+public interface Teller {
+	boolean withdrawFrom(Account account, int dollars);
 }

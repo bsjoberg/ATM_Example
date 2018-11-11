@@ -16,8 +16,7 @@ public class TellerSteps {
 	
 	@When("^I withdraw \\$(\\d+)$")
 	public void iRequest$(int amount) throws Throwable {
-	    Teller teller = new Teller(helper.getCashSlot());
-	    sufficientFunds = teller.withdrawFrom(helper.getMyAccount(), amount);
+	    sufficientFunds = helper.getTeller().withdrawFrom(helper.getMyAccount(), amount);
 	}
 	
 	@Then("^I should be notified of insufficient funds$")

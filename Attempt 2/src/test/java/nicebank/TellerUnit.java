@@ -23,7 +23,7 @@ public class TellerUnit {
 	public void testInsufficientFunds() {
 		helper.getMyAccount().credit(new Money(40,00));
 		
-		Teller teller = new Teller(helper.getCashSlot());
+		AutomatedTeller teller = new AutomatedTeller(helper.getCashSlot());
 		
 		Assert.assertFalse(teller.withdrawFrom(helper.getMyAccount(), 50));
 		Assert.assertEquals(new Money(40,00), helper.getMyAccount().getBalance());
