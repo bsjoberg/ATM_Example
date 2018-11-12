@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AtmServlet extends HttpServlet
 {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -6136363346177332739L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -21,7 +18,10 @@ public class AtmServlet extends HttpServlet
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println(
              "<html><head><title>ATM</title></head>" +
-             "<body><form action=\"/withdraw\" method=\"post\">" +
+             "<body>" + 
+             "<form action=\"/balance\" method=\"get\">" + 
+             "<button type=\"submit\" id=\"balance\">Balance</button></form>" +
+             "<form action=\"/withdraw\" method=\"post\">" +
              "<label for=\"amount\">Amount</label>" +
              "<input type=\"text\" id=\"amount\" name=\"amount\">" +
              "<button type=\"submit\" id=\"withdraw\">Withdraw</button>" +

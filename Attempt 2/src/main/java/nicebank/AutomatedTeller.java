@@ -7,6 +7,10 @@ public class AutomatedTeller implements Teller {
 		this.cashSlot = cashSlot;
 	}
 	
+	public AutomatedTeller() {
+		
+	}
+	
 	/**
 	 * Returns false if insufficient funds exist
 	 * 
@@ -22,5 +26,9 @@ public class AutomatedTeller implements Teller {
 			cashSlot.dispense(dollars);
 		
 		return sufficientFunds;
+	}
+	
+	public String checkBalance(Account account) {
+		return account.getBalance().toString();
 	}
 }

@@ -24,4 +24,15 @@ public class AtmUserInterface implements Teller {
 		
 		return false;
 	}
+	
+	public String checkBalance(Account account) {
+		try {
+			webDriver.get("http://localhost:" + ServerHooks.PORT);
+			webDriver.findElement(By.id("balance")).click();
+		} finally {
+			webDriver.close();
+		}
+		
+		return null;
+	}
 }

@@ -29,4 +29,9 @@ public class TellerUnit {
 		Assert.assertEquals(new Money(40,00), helper.getMyAccount().getBalance());
 	}
 
+	@Test
+	public void testBalance() {
+		helper.getMyAccount().credit(new Money(60,00));
+		Assert.assertEquals(new Money(60,00), helper.getMyAccount().getBalance());
+	}
 }

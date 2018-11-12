@@ -23,11 +23,16 @@ public class TellerSteps {
 	@When("^I check my balance$")
 	public void iCheckMyBalance() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    helper.getTeller().checkBalance(helper.getMyAccount());
 	}
 	
 	@Then("^I should be notified of insufficient funds$")
 	public void iShouldBeNotifiedOfInsufficientFunds() throws Throwable {
 	    Assert.assertFalse(sufficientFunds);
+	}
+	
+	@Then("^I should see that my balance is \\$(\\d+)\\.(\\d+)$")
+	public void iShouldSeeThatMyBalanceIs$(int dollars, int cents) throws Throwable {
+	    Assert.assertEquals(helper.getTeller().checkBalance(helper.getMyAccount()), new Money(dollars, cents).toString());
 	}
 }

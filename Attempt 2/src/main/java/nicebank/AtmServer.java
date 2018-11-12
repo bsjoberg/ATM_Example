@@ -27,6 +27,8 @@ public class AtmServer
 
         context.addServlet(new ServletHolder(
                 new WithdrawalServlet(cashSlot, account)),"/withdraw");
+        context.addServlet(new ServletHolder(
+        		new DisplayBalanceServlet(account)), "/balance");
         context.addServlet(new ServletHolder(new AtmServlet()),"/");
     }
     
