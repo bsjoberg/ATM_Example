@@ -12,7 +12,7 @@ public class AtmUserInterface implements Teller {
 		this.webDriver = new EventFiringWebDriver(driver);
 	}
 	
-	public boolean withdrawFrom(Account account, int dollars) {
+	public void withdrawFrom(Account account, int dollars) {
 		try {
 			webDriver.get("http://localhost:" + ServerHooks.PORT);
 			webDriver.findElement(By.id("amount"))
@@ -21,8 +21,6 @@ public class AtmUserInterface implements Teller {
 		} finally {
 			webDriver.close();
 		}
-		
-		return false;
 	}
 	
 	public String checkBalance(Account account) {
@@ -34,5 +32,9 @@ public class AtmUserInterface implements Teller {
 		}
 		
 		return null;
+	}
+
+	public boolean hasSufficientFunds() {
+		return false;
 	}
 }

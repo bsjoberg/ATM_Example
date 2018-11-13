@@ -24,8 +24,9 @@ public class TellerUnit {
 		helper.getMyAccount().credit(new Money(40,00));
 		
 		AutomatedTeller teller = new AutomatedTeller(helper.getCashSlot());
+		teller.withdrawFrom(helper.getMyAccount(), 50);
 		
-		Assert.assertFalse(teller.withdrawFrom(helper.getMyAccount(), 50));
+		Assert.assertFalse(teller.hasSufficientFunds());
 		Assert.assertEquals(new Money(40,00), helper.getMyAccount().getBalance());
 	}
 

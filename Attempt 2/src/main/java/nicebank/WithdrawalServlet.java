@@ -27,9 +27,17 @@ public class WithdrawalServlet extends HttpServlet
         teller.withdrawFrom(account, amount);
 
         response.setContentType("text/html");
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println(
-             "<html><head><title>ATM</title></head>" +
-                      "<body>Please take your $" + amount + "</body></html>");
-    }
+    	response.setStatus(HttpServletResponse.SC_OK);
+    	
+        if (teller.hasSufficientFunds()) {
+        	response.getWriter().println(
+        			"<html><head><title>ATM</title></head>" +
+        					"<body>Please take your $" + amount + "</body></html>");
+        } else {
+        	response.getWriter().println(
+        			"<html><head><title>ATM</title></head>" +
+        					"<body>Insufficient Funds</body></html>");
+        }
+        
+     }
 }

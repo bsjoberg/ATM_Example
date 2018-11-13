@@ -9,7 +9,6 @@ import support.KnowsTheDomain;
 
 public class TellerSteps {
 	KnowsTheDomain helper;
-	boolean sufficientFunds = true;
 	
 	public TellerSteps(KnowsTheDomain helper) {
 		this.helper = helper;
@@ -17,18 +16,18 @@ public class TellerSteps {
 	
 	@When("^I withdraw \\$(\\d+)$")
 	public void iRequest$(int amount) throws Throwable {
-	    sufficientFunds = helper.getTeller().withdrawFrom(helper.getMyAccount(), amount);
+	    helper.getTeller().withdrawFrom(helper.getMyAccount(), amount);
 	}
 	
 	@When("^I check my balance$")
 	public void iCheckMyBalance() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    helper.getTeller().checkBalance(helper.getMyAccount());
+	    //helper.getTeller().checkBalance(helper.getMyAccount());
 	}
 	
 	@Then("^I should be notified of insufficient funds$")
 	public void iShouldBeNotifiedOfInsufficientFunds() throws Throwable {
-	    Assert.assertFalse(sufficientFunds);
+	    Assert.assertFalse(helper.getTeller().hasSufficientFunds());
 	}
 	
 	@Then("^I should see that my balance is \\$(\\d+)\\.(\\d+)$")
