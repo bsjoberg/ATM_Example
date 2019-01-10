@@ -1,5 +1,7 @@
 package fun;
 
+import org.junit.Assert;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -7,8 +9,14 @@ import cucumber.api.java.en.When;
 
 public class Steps {
 	class Account {
-		void deposit(int amount) {
-			
+		private int balance = 0;
+		
+		public void deposit(int amount) {
+			balance += amount;
+		}
+		
+		public int getBalance() {
+			return balance;
 		}
 	}
 	
@@ -16,6 +24,8 @@ public class Steps {
 	public void iHaveDeposited$InMyAccount(int amount) throws Throwable {
 	    Account myAccount = new Account();
 	    myAccount.deposit(amount);
+	    
+	    Assert.assertEquals(amount, myAccount.getBalance());
 	}
 
 	@When("^I request \\$(\\d+)$")
