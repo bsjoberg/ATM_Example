@@ -3,25 +3,31 @@ package fun;
 import org.junit.Assert;
 
 import cucumber.api.PendingException;
+import cucumber.api.Transform;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import transforms.MoneyConverter;
 
 public class Steps {
 	class Account {
-		private int balance = 0;
+		private Money balance;
 		
-		public void deposit(int amount) {
-			balance += amount;
+		Account() {
+			balance = new Money();
 		}
 		
-		public int getBalance() {
+		public void deposit(Money amount) {
+			balance = balance.add(amount);
+		}
+		
+		public Money getBalance() {
 			return balance;
 		}
 	}
 	
-	@Given("^I have deposited \\$(\\d+) in my account$")
-	public void iHaveDeposited$InMyAccount(int amount) throws Throwable {
+	@Given("^I have deposited \\$(\\d+\\.\\d+) in my account$")
+	public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class)Money amount) throws Throwable {
 	    Account myAccount = new Account();
 	    myAccount.deposit(amount);
 	    
