@@ -15,6 +15,7 @@ public class Steps {
 	class KnowsMyAccount {
 		private Account myAccount;
 		private CashSlot cashSlot;
+		private Teller teller;
 		
 		public Account getMyAccount() {
 			if (myAccount == null) {
@@ -29,11 +30,24 @@ public class Steps {
 			}
 			return cashSlot;
 		}
+		
+		public Teller getTeller() {
+			if (teller == null) {
+				teller = new Teller(getCashSlot());
+			}
+			return teller;
+		}
 	}
 	
 	class CashSlot {
+		private int contents;
+		
 		public int getContents() {
-			return 0;
+			return contents;
+		}
+		
+		public void dispense(int dollars) {
+			contents = dollars;
 		}
 	}
 	
@@ -55,8 +69,14 @@ public class Steps {
 	}
 	
 	class Teller {
+		private CashSlot cashSlot;
+		
+		public Teller(CashSlot cashSlot) {
+			this.cashSlot = cashSlot;
+		}
+		
 		public void withdrawFrom(Account account, int dollars) {
-			
+			cashSlot.dispense(dollars);
 		}
 	}
 	
@@ -73,8 +93,7 @@ public class Steps {
 
 	@When("^I withdraw \\$(\\d+)$")
 	public void iWithdraw$(int amount) throws Throwable {
-		Teller teller = new Teller();
-		teller.withdrawFrom(helper.getMyAccount(), amount);
+		helper.getTeller().withdrawFrom(helper.getMyAccount(), amount);
 	}
 
 	@Then("^\\$(\\d+) should be dispensed$")
