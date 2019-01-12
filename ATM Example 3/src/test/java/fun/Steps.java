@@ -14,6 +14,7 @@ public class Steps {
 	
 	class KnowsMyAccount {
 		private Account myAccount;
+		private CashSlot cashSlot;
 		
 		public Account getMyAccount() {
 			if (myAccount == null) {
@@ -22,6 +23,18 @@ public class Steps {
 			return myAccount;
 		}
 		
+		public CashSlot getCashSlot() {
+			if (cashSlot == null) {
+				cashSlot = new CashSlot();
+			}
+			return cashSlot;
+		}
+	}
+	
+	class CashSlot {
+		public int getContents() {
+			return 0;
+		}
 	}
 	
 	class Account {
@@ -65,8 +78,8 @@ public class Steps {
 	}
 
 	@Then("^\\$(\\d+) should be dispensed$")
-	public void $ShouldBeDispensed(int arg1) throws Throwable {
+	public void $ShouldBeDispensed(int dollars) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    Assert.assertEquals("Incorrect amount dispensed", dollars, helper.getCashSlot().getContents());
 	}
 }
