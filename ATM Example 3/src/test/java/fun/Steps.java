@@ -2,7 +2,6 @@ package fun;
 
 import org.junit.Assert;
 
-import cucumber.api.PendingException;
 import cucumber.api.Transform;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -58,7 +57,6 @@ public class Steps {
 			balance = new Money();
 		}
 		
-
 		public void deposit(Money amount) {
 			balance = balance.add(amount);
 		}
@@ -98,7 +96,6 @@ public class Steps {
 
 	@Then("^\\$(\\d+) should be dispensed$")
 	public void $ShouldBeDispensed(int dollars) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
 	    Assert.assertEquals("Incorrect amount dispensed", dollars, helper.getCashSlot().getContents());
 	}
 }
