@@ -10,7 +10,19 @@ import cucumber.api.java.en.When;
 import transforms.MoneyConverter;
 
 public class Steps {
-	private Account myAccount;
+	KnowsMyAccount helper;
+	
+	class KnowsMyAccount {
+		private Account myAccount;
+		
+		public Account getMyAccount() {
+			if (myAccount == null) {
+				myAccount = new Account();
+			}
+			return myAccount;
+		}
+		
+	}
 	
 	class Account {
 		private Money balance;
@@ -19,6 +31,7 @@ public class Steps {
 			balance = new Money();
 		}
 		
+
 		public void deposit(Money amount) {
 			balance = balance.add(amount);
 		}
@@ -34,18 +47,21 @@ public class Steps {
 		}
 	}
 	
+	public Steps() {
+		helper = new KnowsMyAccount();
+	}
+	
 	@Given("^I have deposited \\$(\\d+\\.\\d+) in my account$")
 	public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class)Money amount) throws Throwable {
-	    myAccount = new Account();
-	    myAccount.deposit(amount);
+	    helper.getMyAccount().deposit(amount);
 	    
-	    Assert.assertEquals("Incorrect Account Balance - ", amount, myAccount.getBalance());
+	    Assert.assertEquals("Incorrect Account Balance - ", amount, helper.getMyAccount().getBalance());
 	}
 
 	@When("^I withdraw \\$(\\d+)$")
 	public void iWithdraw$(int amount) throws Throwable {
 		Teller teller = new Teller();
-		teller.withdrawFrom(myAccount, amount);
+		teller.withdrawFrom(helper.getMyAccount(), amount);
 	}
 
 	@Then("^\\$(\\d+) should be dispensed$")
