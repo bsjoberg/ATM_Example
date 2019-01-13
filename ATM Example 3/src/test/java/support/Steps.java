@@ -1,4 +1,4 @@
-package fun;
+package support;
 
 import org.junit.Assert;
 
