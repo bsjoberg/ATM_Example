@@ -9,7 +9,7 @@
 package transforms;
 
 import cucumber.api.Transformer;
-import fun.Money;
+import nicebank.Money;
 
 public class MoneyConverter extends Transformer<Money> {
      public Money transform(String amount) {
