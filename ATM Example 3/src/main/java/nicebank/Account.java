@@ -14,4 +14,12 @@ public class Account {
 	public Money getBalance() {
 		return balance;
 	}
+
+	public boolean hasSufficientFunds(int dollars) {
+		if (balance.dollars() >= dollars) {
+			return true;
+		}
+		else
+			return false;
+	}
 }
