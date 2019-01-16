@@ -7,7 +7,7 @@ public class Account {
 		balance = new Money();
 	}
 	
-	public void deposit(Money amount) {
+	public void credit(Money amount) {
 		balance = balance.add(amount);
 	}
 	
