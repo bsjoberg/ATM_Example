@@ -17,7 +17,7 @@ public class AtmServer
     private final Server server;
     
     public AtmServer(int port) {
-        server = new Server(9988);
+        server = new Server(port);
 
         ServletContextHandler context = 
             new ServletContextHandler(ServletContextHandler.SESSIONS);
