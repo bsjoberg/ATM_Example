@@ -18,8 +18,6 @@ public class AccountSteps {
 	@Given("^my acccount has been credited with \\$(\\d+\\.\\d+)$")
 	public void myAcccountHasBeenCreditedWith$(@Transform(MoneyConverter.class)Money amount) throws Throwable {
 	    helper.getMyAccount().credit(amount);
-	    
-	    Assert.assertEquals("Incorrect Account Balance - ", amount, helper.getMyAccount().getBalance());
 	}
 	
 	@Then("^the balance of my account should be \\$(\\d+\\.\\d+)$")
