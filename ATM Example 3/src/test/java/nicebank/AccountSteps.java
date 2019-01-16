@@ -2,7 +2,6 @@ package nicebank;
 
 import org.junit.Assert;
 
-import cucumber.api.PendingException;
 import cucumber.api.Transform;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,8 +15,8 @@ public class AccountSteps {
 		this.helper = helper;
 	}
 	
-	@Given("^I have deposited \\$(\\d+\\.\\d+) in my account$")
-	public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class)Money amount) throws Throwable {
+	@Given("^my acccount has been credited with \\$(\\d+\\.\\d+)$")
+	public void myAcccountHasBeenCreditedWith$(@Transform(MoneyConverter.class)Money amount) throws Throwable {
 	    helper.getMyAccount().credit(amount);
 	    
 	    Assert.assertEquals("Incorrect Account Balance - ", amount, helper.getMyAccount().getBalance());
