@@ -23,7 +23,7 @@ public class Account {
 			return false;
 	}
 
-	public void withdraw(int dollars) {
+	public void debit(int dollars) {
 		balance = balance.minus(new Money(dollars, 0));
 	}
 }

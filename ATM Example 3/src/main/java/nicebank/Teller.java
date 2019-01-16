@@ -9,7 +9,7 @@ public class Teller {
 	
 	public void withdrawFrom(Account account, int dollars) {
 		if (account.hasSufficientFunds(dollars)) {
-			account.withdraw(dollars);
+			account.debit(dollars);
 			cashSlot.dispense(dollars);
 		}
 		else {
