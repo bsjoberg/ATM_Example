@@ -30,5 +30,10 @@
   		<artifactId>gherkin</artifactId>
   		<version>2.12.2</version>
   	</dependency>
+  	<dependency>
+    	<groupId>org.eclipse.jetty</groupId>
+    	<artifactId>jetty-webapp</artifactId>
+    	<version>9.4.14.v20181114</version>
+</dependency>
   </dependencies>
 </project>
