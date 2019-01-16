@@ -1,4 +1,4 @@
-package support;
+package nicebank;
 
 import org.junit.runner.RunWith;
 
@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		plugin = { "pretty", "html:out" }, 
 		features = "src/test/resources", 
-		glue = {"fun"}, 
+		glue = {"nicebank"}, 
 		snippets = SnippetType.CAMELCASE)
 
 public class RunCukesTest {
