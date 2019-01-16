@@ -8,9 +8,12 @@ public class Teller {
 	}
 	
 	public void withdrawFrom(Account account, int dollars) {
-		if (account.hasSufficientFunds(dollars))
+		if (account.hasSufficientFunds(dollars)) {
+			account.withdraw(dollars);
 			cashSlot.dispense(dollars);
-		else
+		}
+		else {
 			System.out.println("Insufficient Funds");
+		}
 	}
 }

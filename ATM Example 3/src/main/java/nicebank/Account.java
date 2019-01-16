@@ -22,4 +22,8 @@ public class Account {
 		else
 			return false;
 	}
+
+	public void withdraw(int dollars) {
+		balance = balance.minus(new Money(dollars, 0));
+	}
 }

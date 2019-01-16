@@ -23,9 +23,8 @@ public class AccountSteps {
 	    Assert.assertEquals("Incorrect Account Balance - ", amount, helper.getMyAccount().getBalance());
 	}
 	
-	@Then("^the balance of my account should be \\$(\\d+)\\.(\\d+)$")
-	public void theBalanceOfMyAccountShouldBe$(int arg1, int arg2) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	@Then("^the balance of my account should be \\$(\\d+\\.\\d+)$")
+	public void theBalanceOfMyAccountShouldBe$(@Transform(MoneyConverter.class)Money amount) throws Throwable {
+		Assert.assertEquals("Incorrect Account Balance - ", amount, helper.getMyAccount().getBalance());
 	}
 }
