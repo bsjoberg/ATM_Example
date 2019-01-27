@@ -16,7 +16,7 @@ public class AtmServer
 {
     private final Server server;
     
-    public AtmServer(int port) {
+    public AtmServer(int port, CashSlot cashSlot, Account account) {
         server = new Server(port);
 
         ServletContextHandler context = 
@@ -24,6 +24,7 @@ public class AtmServer
         context.setContextPath("/");
         server.setHandler(context);
 
+        context.addServlet(new ServletHolder(new WithdrawalServlet(cashSlot, account)), "/withdraw");
         context.addServlet(new ServletHolder(new AtmServlet()),"/*");
     }
     
