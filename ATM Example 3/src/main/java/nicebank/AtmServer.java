@@ -35,8 +35,4 @@ public class AtmServer
     public void stop() throws Exception {
         server.stop();
     }
-
-    public static void main(String[] args) throws Exception {
-        new AtmServer(9988).start();
-    }
 }
