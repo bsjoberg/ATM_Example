@@ -2,21 +2,22 @@ package nicebank;
 
 public class Account {
 	private Money balance;
+	private TransactionQueue queue = new TransactionQueue();
 	
 	public Account() {
 		balance = new Money();
 	}
 	
 	public void credit(Money amount) {
-		balance = balance.add(amount);
+		queue.write("+" + amount.toString());
 	}
 	
 	public Money getBalance() {
-		return balance;
+		return BalanceStore.getBalance();
 	}
 
 	public boolean hasSufficientFunds(int dollars) {
-		if (balance.dollars() >= dollars) {
+		if (getBalance().dollars() >= dollars) {
 			return true;
 		}
 		else
@@ -24,6 +25,7 @@ public class Account {
 	}
 
 	public void debit(int dollars) {
-		balance = balance.minus(new Money(dollars, 0));
+		Money amount = new Money(dollars, 0);
+		queue.write("-" + amount.toString());
 	}
 }
