@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class Money {
-    private final int dollars;
+    private int dollars;
     private final int cents;
     
     public Money() {
@@ -22,6 +22,10 @@ public final class Money {
     
     public Money(int dollars, int cents) {
         this.dollars = dollars;
+    	if (cents > 100) {
+    		this.dollars = this.dollars + 1;
+    		cents -= 100;
+    	}
         this.cents = cents;
     }
     
