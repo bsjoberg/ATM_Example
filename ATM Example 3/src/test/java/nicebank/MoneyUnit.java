@@ -35,4 +35,11 @@ public class MoneyUnit {
 		money = money.add(new Money(0, 75));
 		Assert.assertEquals(new Money(2, 25), money);
 	}
+	
+	@Test
+	public void testAddCentsThatAddsTwoDollars() {
+		Money money = new Money (1, 50);
+		money = money.add(new Money(0, 175));
+		Assert.assertEquals(new Money(3, 25), money);		
+	}
 }
