@@ -42,4 +42,11 @@ public class MoneyUnit {
 		money = money.add(new Money(0, 175));
 		Assert.assertEquals(new Money(3, 25), money);		
 	}
+	
+	@Test
+	public void testDollarAndCentsMoneyStringContructorWithDollarSign() {
+		Money money = new Money("$100.10");
+		Assert.assertEquals(new Money(100, 10), money);
+	}
+	
 }
