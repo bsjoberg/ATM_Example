@@ -36,7 +36,7 @@ public final class Money {
 
         matcher.find();
         this.dollars = Integer.parseInt(matcher.group(1));
-        this.cents = Integer.parseInt(matcher.group(2));
+       	this.cents = Integer.parseInt(matcher.group(2));
     }
 
     public int dollars() {

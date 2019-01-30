@@ -48,5 +48,4 @@ public class MoneyUnit {
 		Money money = new Money("$100.10");
 		Assert.assertEquals(new Money(100, 10), money);
 	}
-	
 }
