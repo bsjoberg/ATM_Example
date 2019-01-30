@@ -23,8 +23,9 @@ public final class Money {
     public Money(int dollars, int cents) {
         this.dollars = dollars;
     	if (cents > 100) {
-    		this.dollars = this.dollars + 1;
-    		cents -= 100;
+    		int moreDollars = (int) Math.floor(cents / 100);
+    		this.dollars = this.dollars + moreDollars;
+    		cents -= moreDollars * 100;
     	}
         this.cents = cents;
     }

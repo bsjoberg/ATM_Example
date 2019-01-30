@@ -21,5 +21,11 @@ public class MoneyUnit {
 		Assert.assertEquals(1, money.dollars());
 		Assert.assertEquals(5, money.cents());
 	}
-
+	
+	@Test
+	public void testOver200Cents() {
+		Money money = new Money(0, 210);
+		Assert.assertEquals(2, money.dollars());
+		Assert.assertEquals(10, money.cents());
+	}
 }
