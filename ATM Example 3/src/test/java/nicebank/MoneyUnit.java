@@ -44,6 +44,13 @@ public class MoneyUnit {
 	}
 	
 	@Test
+	public void testMinusCentsThatReduceByADollar() {
+		Money money = new Money (1, 50);
+		money = money.minus(new Money(0, 75));
+		Assert.assertEquals(new Money(0, 75), money);
+	}
+	
+	@Test
 	public void testDollarAndCentsMoneyStringContructorWithDollarSign() {
 		Money money = new Money("$100.10");
 		Assert.assertEquals(new Money(100, 10), money);
