@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import hooks.ServerHooks;
-
 public class AtmUserInterface implements Teller {
 
 	private final EventFiringWebDriver webDriver;
