@@ -10,14 +10,20 @@
   		<artifactId>cucumber-java</artifactId>
   		<version>4.3.0</version>
   	</dependency>
+  	<dependency>
+  		<groupId>io.cucumber</groupId>
+  		<artifactId>cucumber-core</artifactId>
+  		<version>4.3.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>io.cucumber</groupId>
+  		<artifactId>cucumber-junit</artifactId>
+  		<version>4.3.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>io.cucumber</groupId>
+  		<artifactId>gherkin</artifactId>
+  		<version>6.0.17</version>
+  	</dependency>
   </dependencies>
-  <dependencyManagement>
-  	<dependencies>
-  		<dependency>
-  			<groupId>io.cucumber</groupId>
-  			<artifactId>cucumber-java</artifactId>
-  			<version>4.3</version>
-  		</dependency>
-  	</dependencies>
-  </dependencyManagement>
 </project>
