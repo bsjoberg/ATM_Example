@@ -4,4 +4,20 @@
   <artifactId>ATM_Example_Attempt_4</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>ATM Example Attempt 4</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>io.cucumber</groupId>
+  		<artifactId>cucumber-java</artifactId>
+  		<version>4.3.0</version>
+  	</dependency>
+  </dependencies>
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>io.cucumber</groupId>
+  			<artifactId>cucumber-java</artifactId>
+  			<version>4.3</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
 </project>
