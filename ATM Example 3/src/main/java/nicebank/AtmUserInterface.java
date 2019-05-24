@@ -9,7 +9,7 @@ public class AtmUserInterface implements Teller {
 	private final EventFiringWebDriver webDriver;
 	
 	public AtmUserInterface() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\brian\\Documents\\workspace\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\brian\\Documents\\chromedriver_win32\\chromedriver.exe");
 		this.webDriver = new EventFiringWebDriver(new ChromeDriver());
 	}
 	
